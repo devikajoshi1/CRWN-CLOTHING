@@ -1,6 +1,8 @@
-import { useDispatch , useSelector} from 'react-redux';
-import { selectCartItems } from '../../store/cart/cart.selector';
-import { addItemToCart } from '../../store/cart/cart.action';
+import { useDispatch } from 'react-redux';
+
+
+import { addItemToCart } from '../../store/cart/cart.reducer';
+
 import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
 
 import {
@@ -12,10 +14,10 @@ import {
 
 const ProductCard = ({ product }) => {
   const { name, price, imageUrl } = product;
-  const cartitems = useSelector(selectCartItems);
   const dispatch = useDispatch();
+ 
 
-  const addProductToCart = () => dispatch(addItemToCart(cartitems,product));
+  const addProductToCart = () => dispatch(addItemToCart(product));
 
   return (
     <ProductCartContainer>
